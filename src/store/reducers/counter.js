@@ -34,6 +34,12 @@ const reducer = (state = initialState, action) => {
       counter: state.counter - action.value
     };
   }
+  if (action.type === actionTypes.MULTIPLY) {
+    return {
+      ...state,
+      counter: state.counter + state.counter 
+    }
+  }
   return state;
 };
 

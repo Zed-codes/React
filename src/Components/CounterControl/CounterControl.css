@@ -13,4 +13,6 @@
   box-shadow: 0 2px 3px #ccc;
   box-sizing: border-box;
   cursor: pointer;
+
+  background-color: #eee
 }

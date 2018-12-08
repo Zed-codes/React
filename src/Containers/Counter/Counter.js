@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux"; // A function which returns a HOC function for the export
 
 import CounterControl from "../../Components/CounterControl/CounterControl";
+import NotCounterControl from "../../Components/CounterControl/NotCounterControl";
 import CounterOutput from "../../Components/CounterOutput/CounterOutput";
 import * as actionTypes from "../../store/actions";
 
@@ -54,14 +55,14 @@ class Counter extends Component {
           label="Decrement"
           clicked={this.props.onDecrementCounter}
         />
-        <CounterControl label="Add 10" clicked={this.props.onAddCounter} />
+        <CounterControl label="Add 5" clicked={this.props.onAddCounter} />
         <CounterControl
-          label="Subtract 10"
+          label="Subtract 5"
           clicked={this.props.onSubtractCounter}
         />
-        <CounterControl
-          label="TODO"
-          clicked={()=>console.log("SALAM")}
+        <NotCounterControl
+          label="Multiply by 2"
+          clicked={this.props.onMultiplyCounter}
         />
         <hr />
         <button onClick={() => this.props.onStoreResult(this.props.ctr)}>
@@ -94,13 +95,14 @@ const mapDispatchToProps = dispatch => {
   return {
     onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
     onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
-    onAddCounter: () => dispatch({ type: actionTypes.ADD, value: 10 }),
+    onAddCounter: () => dispatch({ type: actionTypes.ADD, value: 5 }),
     onSubtractCounter: () =>
-      dispatch({ type: actionTypes.SUBTRACT, value: 10 }),
+      dispatch({ type: actionTypes.SUBTRACT, value: 5 }),
     onStoreResult: result =>
       dispatch({ type: actionTypes.STORE_RESULT, result: result }),
     onDeleteResult: id =>
-      dispatch({ type: actionTypes.DELETE_RESULT, resultElId: id })
+      dispatch({ type: actionTypes.DELETE_RESULT, resultElId: id }),
+    onMultiplyCounter: () => dispatch({type: actionTypes.MULTIPLY}) 
   };
 };
 
